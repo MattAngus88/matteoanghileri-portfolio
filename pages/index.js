@@ -49,7 +49,7 @@ export default function Home() {
             </section>
 
             <section id="about" className="about">
-              <div><p>I'm Matteo Anghileri, a 3D Generalist specializing in modeling, texturing, lighting, and animation.</p></div>
+              <div><p>I&apos;m Matteo Anghileri, a 3D Generalist specializing in modeling, texturing, lighting, and animation.</p></div>
               <div><img src="/images/me.jpg" alt="Matteo Anghileri" /></div>
             </section>
 
