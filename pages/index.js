@@ -98,7 +98,6 @@ export default function Home() {
     <h1 className="subheader text-center titolo">My Portfolio</h1>
     <div className="container">
     <div className="row">
-    import Link from 'next/link';
     
     {[
       {
@@ -176,7 +175,7 @@ export default function Home() {
     <h2>Welcome!</h2>
     <div className="separator"></div>
     <p>
-    I'm Matteo, a <mark>3D Artist</mark> from Milan who will soon graduate in Creative Technologies (3D and VFX) at{' '}
+    I&apos;m Matteo, a <mark>3D Artist</mark> from Milan who will soon graduate in Creative Technologies (3D and VFX) at{' '}
     <mark>NABA</mark>.
     My passion is to transform ideas into unforgettable <mark>visual narratives</mark>.
     </p>
@@ -185,7 +184,7 @@ export default function Home() {
     from concept development and modeling to lighting, rendering and final compositing.
     </p>
     <p>
-    Fueled by a <mark>tireless curiosity</mark>, I'm always looking for new technical and artistic horizons.
+    Fueled by a <mark>tireless curiosity</mark>, I&apos;m always looking for new technical and artistic horizons.
     </p>
     
     <div className="separator" style={{ marginTop: '2rem', marginBottom: '1.5rem' }}></div>
