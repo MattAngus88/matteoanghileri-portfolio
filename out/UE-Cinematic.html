@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ANGHILERI 3D – BAR</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/LogoME.png" />
+
+  <style>
+    /* ========== RESET ========== */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;scroll-behavior:smooth}
+    body{font-family:'IBM Plex Sans',sans-serif;color:#333;overflow-x:hidden;}
+
+    mark{background:#78d4f8;border-radius:2px;padding:0 0.2em}
+
+    /* ========== BACKGROUND VIDEO ========== */
+    .bg-video{position:fixed;top:0;left:0;z-index:-2;width:100%;height:100%;object-fit:cover;}
+
+    /* ========== HEADER (solid) ========== */
+    header{position:fixed;top:0;left:0;width:100%;height:5rem;background:#fdfaf6;border-bottom:1px solid rgba(0,0,0,.12);box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:1000;overflow:hidden;transition:height .35s ease-out;}
+    header.open{height:14rem;}
+    .top{width:100%;height:5rem;padding:0 1.2rem;display:flex;align-items:center;justify-content:space-between;}
+    .logo-img{height:52px;width:auto;cursor:pointer;}
+    .hamburger{width:32px;height:22px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;}
+    .hamburger div{height:4px;background:#333;transition:background .25s;}
+    .hamburger:hover div{background:#0084b8;}
+    nav{display:none;flex-direction:column;align-items:center;gap:1rem;margin-top:1.2rem;}
+    header.open nav{display:flex;}
+    nav a{color:#333;text-decoration:none;font-size:1.25rem;text-transform:uppercase;font-weight:300;letter-spacing:.08em;transition:color .2s;}
+    nav a:hover{color:#0084b8;}
+
+    /* ========== LAYOUT WRAPPER ========== */
+    .wrapper{width:100%;display:flex;flex-direction:column;align-items:center;padding:7rem 1rem 4rem;}
+
+    /* CARD CONTENT */
+    .card{background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(0,0,0,.25);padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:2.5rem;width:100%;max-width:900px;}
+
+    /* TITLES */
+    h2{font-size:3rem;font-weight:600;color:#0084B8;text-align:center;}
+    h3{font-size:1.8rem;font-weight:300;color:#6c6c6c;text-align:center;margin-top:0.4rem;}
+
+    /* VIDEO CARD */
+    .video-card{position:relative;width:100%;max-width:780px;aspect-ratio:16/9;overflow:hidden;border-radius:12px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.28);} 
+    .video-card img,.video-card video,.video-card iframe{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border:none;}
+    .thumbnail img.static{z-index:1}
+    .thumbnail video.animated{opacity:0;z-index:2;transition:opacity .5s ease;pointer-events:none}
+    .thumbnail:hover video.animated{opacity:1}
+    .thumbnail .overlay{position:absolute;inset:0;background:rgba(0,0,0,.46);display:flex;align-items:center;justify-content:center;z-index:3;transition:opacity .35s ease;}
+    .thumbnail:hover .overlay{opacity:0}
+    .play-button{font-size:4.8rem;color:#ffffffd0;pointer-events:none}
+    @media(max-width:768px){.play-button{font-size:3.5rem}}
+
+    /* DESCRIPTION */
+    .description{max-width:520px;font-size:1.6rem;line-height:1.45;font-weight:500;text-align:justify;}
+    .description p{margin-bottom:1.5rem;}
+
+    /* BACK ARROW */
+    .back-arrow{align-self:flex-start;font-size:2.6rem;color:#929292;text-decoration:none;transition:color .25s ease;position:relative;overflow:hidden;}
+    @keyframes arrow-move{0%{transform:translateX(0);}50%{transform:translateX(-6px);}100%{transform:translateX(0);}}
+    .back-arrow:hover{color:#3CB0DD;animation:arrow-move .5s ease-in-out infinite;}
+
+  /* === ABOUT-ME DARK STYLE FOR BAR PAGE === */
+body, nav a, h1, h2, h3, h4, h5, h6, input, textarea, button{
+  font-family:'Space Grotesk', sans-serif !important;
+  color:#ffffff !important;
+}
+body{background:#000;}
+/* background video overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:-1;
+}
+/* header */
+header{
+  background:rgba(0,0,0,.8) !important;
+  border-bottom:2px solid #bca074 !important;
+  height:4rem !important;
+}
+.hamburger{display:none !important;}
+nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:2rem !important;
+  margin-left:2rem !important;
+}
+nav a{
+  color:#ffffff !important;
+  font-size:0.75rem !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.22em !important;
+  font-weight:300 !important;
+  text-decoration:none;
+}
+nav a:hover{color:#ffffff !important;}
+/* icons group right */
+nav .about-icons{
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+}
+nav .about-icons img,
+nav .about-icons svg{
+  width:26px !important;
+  height:26px !important;
+  filter:invert(1) brightness(100%) !important;
+}
+/* wrapper center column */
+.wrapper{
+  padding-top:6rem !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:3rem !important;
+}
+/* card transparent */
+.card{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.description{
+  color:#ffffff !important;
+}
+/* headings color */
+h2{color:#ffffff !important;}
+h3{color:#ffffff !important;}
+  /* === NAVBAR ALIGNMENT FIX (match screenshot) === */
+header{
+  position:fixed !important;
+  top:0; left:0;
+  width:100%;
+  height:4rem !important;
+  background:rgba(0,0,0,.82) !important;
+  border-bottom:2px solid #bca074 !important;
+  display:flex !important;
+  align-items:center !important;
+  z-index:1000;
+}
+header .top{
+  width:100%;
+  height:100%;
+  display:flex !important;
+  align-items:center !important;
+  padding:0 1.5rem !important;
+}
+header nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:2.5rem !important;
+  margin-left:2rem !important;   /* spacing after logo */
+  white-space:nowrap !important;
+}
+header nav a{
+  color:#ffffff !important;
+  font-family:'Space Grotesk', sans-serif !important;
+  font-size:0.8rem !important;
+  letter-spacing:0.20em !important;
+  text-transform:uppercase !important;
+  font-weight:300 !important;
+  text-decoration:none !important;
+  line-height:1 !important;
+}
+header nav a:hover{color:#ffffff !important;}
+
+/* icons block */
+header nav .about-icons{
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:1.3rem !important;
+  position:relative !important;
+  top:0 !important;      /* same vertical center as links */
+}
+header nav .about-icons img,
+header nav .about-icons svg{
+  width:24px !important;
+  height:24px !important;
+  filter:invert(1) brightness(100%) !important;
+}
+  /* === FINAL NAVBAR OVERRIDE (match index) === */
+header{
+  background:rgba(0,0,0,.8) !important;
+  border:none !important;
+  height:4rem !important;
+  display:flex !important;
+  align-items:center !important;
+}
+header .top{
+  padding:0 2rem !important;
+  height:100% !important;
+  display:flex !important;
+  align-items:center !important;
+}
+header nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:2.2rem !important;
+  margin-left:2rem !important;
+}
+header nav a{
+  color:#ffffff !important;
+  font-size:0.75rem !important;
+  letter-spacing:0.22em !important;
+  text-transform:uppercase !important;
+  font-weight:300 !important;
+  text-decoration:none !important;
+  line-height:1 !important;
+}
+header nav a:hover{
+  color:#ffffff !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+  position:relative !important;
+  top:0 !important;
+  transform:none !important;
+}
+header nav .about-icons img,
+header nav .about-icons svg{
+  width:26px !important;
+  height:26px !important;
+  filter:invert(1) brightness(100%) !important;
+  transition:transform .3s ease, opacity .3s ease;
+}
+header nav .about-icons img:hover,
+header nav .about-icons svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+  /* === NAVBAR LINKS LEFT‑ALIGN === */
+header nav{
+  margin-left:1rem !important;  /* subito dopo il logo */
+}
+  /* === NAVBAR LINKS LEFT after logo (absolute positioning) === */
+header nav{
+  position:absolute !important;
+  left:7rem !important;      /* Logo (~70px) + padding */
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  margin-left:0 !important;
+  gap:2rem !important;
+}
+  /* === REMOVE ICONS & LEFT ALIGN NAV LINKS === */
+header nav .about-icons{display:none !important;}
+header nav{
+  position:absolute !important;
+  left:7rem !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  gap:2.2rem !important;
+}
+  /* === NAVBAR BIGGER + LINKS CENTER LEFT === */
+header{
+  height:6rem !important;                /* bigger bar */
+}
+header .top{
+  height:6rem !important;                /* match header */
+}
+header nav{
+  left:6.5rem !important;                /* starts after logo */
+  gap:3rem !important;                   /* wider spacing */
+  font-size:0.85rem !important;          /* slightly bigger text */
+}
+header nav a{
+  font-size:0.85rem !important;
+}
+  /* === NAV LINKS RAISED VERTICALLY === */
+header nav{
+  top:35% !important;
+  left:8% !important;
+  transform:translateY(-60%) !important;
+}
+  </style>
+</head>
+<body>
+  <!-- BACKGROUND VIDEO with loop fallback -->
+  <video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="video/overlay.mp4" type="video/mp4" />
+  </video>
+
+  <!-- HEADER -->
+  <header>
+    <div class="top">
+      <img src="images/logo.png" alt="MB Logo" class="logo-img" onclick="location.href='index.html'" />
+      <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+    </div>
+    
+<nav>
+  <a href="/out/index.html#portfolio">My Portfolio</a>
+  <a href="/out/index.html#about">About Me</a>
+  <a href="/out/index.html#contact">Contact Me</a>
+</nav>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <main class="wrapper">
+    <section class="card">
+      <div class="project-heading">
+        <h2>UE CINEMATIC</h2>
+        <h3>Environment - Landscape Design</h3>
+      </div>
+
+      <!-- Video -->
+      <div class="video-card" onclick="playVideo(this)">
+        <div class="thumbnail">
+          <img class="static" src="images/thumb1.png" alt="UE cover" />
+          <video class="animated" autoplay muted loop playsinline>
+            <source src="video/UE Cinematic.webm" type="video/webm" />
+          </video>
+          <div class="overlay"><span class="play-button">&#9658;</span></div>
+        </div>
+        <div class="video-embed"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="description">
+        <p>Personal project developed alone with <mark>Unreal Engine</mark>, set in a military base and centered on the model of a dune buggy.</p>
+        <p>I took care of every aspect of the aesthetic vision, starting from an original concept by Kris Thaler and declining it in a visual language consistent with the modern military setting.</p>
+        <p>The ground was generated with <mark>Gaea</mark> and the landscape was then refined in Unreal Engine; <mark>Quixel Megascans</mark> were integrated to further enrich the scene.</p>
+      </div>
+
+      <a href="/out/index.html#portfolio" class="back-arrow" title="Back to Portfolio">&lt;</a>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu(){document.querySelector('header').classList.toggle('open');}
+    function playVideo(card){
+      const YT_ID='PDsXiU0pU3Y';
+      const embed=card.querySelector('.video-embed');
+      embed.innerHTML=`<iframe src="https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;"></iframe>`;
+      card.querySelector('.thumbnail').style.display='none';
+    }
+
+    // Fallback to ensure seamless looping on browsers that ignore the loop attribute
+    const bg = document.getElementById('bgVideo');
+    bg.addEventListener('ended', () => {
+      bg.currentTime = 0;
+      bg.play();
+    });
+  </script>
+</body>
+</html>

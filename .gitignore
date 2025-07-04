@@ -15,7 +15,8 @@
 
 # next.js
 /.next/
-/out/
+/out/video/overlay.mp4
+/out/docs/CV.pdf
 
 # production
 /build
