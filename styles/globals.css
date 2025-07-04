@@ -1,88 +1,1196 @@
 
 /* globals.css */
-* {
+
+/* ===== Added for Blearred style ===== */
+
+/* Card bianca SOLO nella sezione About  */
+.about-container{
+  background:#fff;
+  border-radius:60px;               /* angoli arrotondati */
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  padding:3rem 2.5rem;              /* spazio interno */
+  max-width:1300px;
+  margin:0 auto;                    /* centrata in orizzontale */
+  display:flex;                     /* mantieni il layout attuale */
+  gap:3rem;                         /* distanza fra foto e testo */
+}
+@media (max-width:768px){
+  .about-container{
+    border-radius:40px;
+    padding:2rem 1.5rem;
+    flex-direction:column;          /* per impilare su mobile */
+  }
+}
+/* ——————————————————————————
+VIDEO DI BACKGROUND per sezioni
+—————————————————————————— */
+.section-bg {
+  position: absolute;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* riempie l’area, mantiene proporzioni */
+  z-index: -1;
+  /* dietro a tutto il contenuto */
+  pointer-events: none;
+  /* il video non intercetta click */
+}
+
+/* le sezioni diventano contenitori relative,
+così il video resta confinato al loro interno   */
+#portfolio,
+#about {
+  position: relative;
+  overflow: hidden;
+  /* ritaglia eventuali sbordi */
+}
+.titolo {
+  font-size: 5rem !important;
+}
+
+/* card con immagine che si ripete orizzontalmente */
+.img-repeat {
+  /* dimensione “alto” della card: usa quella che vuoi  */
+  height: 200px;
+  /* esempio */
+  
+  /* ripeti l’immagine all’infinito a destra */
+  background-image: url('/images/PlaceHolder.png');
+  background-repeat: repeat-x;
+  /* solo orizzontale */
+  background-position: top left;
+  /* parte da sinistra in alto */
+  background-size: contain;
+  /* mantiene proporzioni */
+}
+
+.card {
+  border-radius: 60px;
+}
+
+.bordoarrotondato {
+  border-radius: 60px 0px 0px 60px;
+}
+
+/* anima delicatamente ogni card con un leggero ingrandimento */
+.card-hover {
+  transition: transform .3s ease, box-shadow .3s ease;
+  /* opzionale: “fissa” la dimensione di riferimento per Chrome */
+  transform-origin: center center;
+}
+
+.card-hover:hover {
+  transform: scale(1.03);
+  /* ingrandisce del 3 % */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  /* ombra più pronunciata */
+}
+
+body {
+  min-height: 150vh;
+  height: 100dvh;
+  /* dynamic viewport height - iOS 15+ */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#home video {
+  height: calc(100dvh + env(safe-area-inset-bottom));
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  font-family: 'Inter', sans-serif;
-  background-color: #0a0f12;
-  color: #eef2f5;
-  overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
+  overflow-y: scroll;
+  /* lascia attivo lo scroll */
   height: auto;
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.preloader {
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Opera */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 150vh;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Opera */
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: #fdfaf6;
+  color: #333;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  /* Internet Explorer e Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+header {
   position: fixed;
-  inset: 0;
-  background: #0a0f12;
-  color: #3cb0dd;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  background: #fdfaf6;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: height 0.4s ease-out;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+header.open {
+  height: 15rem;
+}
+
+.top {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  height: 5rem;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger div {
+  height: 4px;
+  background: #333;
+}
+
+nav {
+  display: none;
+}
+
+header.open nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  width: 100%;
+  z-index: 500;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 1rem 0;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #3CB0DD;
+}
+
+section {
+  display: none;
+}
+
+#home {
+  display: block;
+}
+
+#home::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+#home video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.showreel-btn{
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 3rem;
+  border: 2px solid #fff;
+  border-radius: 2rem;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  transition: all .3s ease;
+  z-index: 800;
+}
+
+.showreel-btn:hover{
+  background: #fff;
+  color: #000;
+}
+
+.about-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.about-image {
+  flex: 0 0 220px;
+  /* riduce la dimensione fissa dell’immagine */
+  display: flex;
   justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.about-content {
+  flex: 1;
+  font-size: 1.4rem;
+  /* aumenta la grandezza del testo */
+  line-height: 1.8;
+  font-weight: 300;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-align: left;
+  /* oppure right se vuoi allinearlo a destra */
+}
+
+.about-content mark {
+  background-color: var(--highlight);
+  /* verde menta */
+  font-weight: 400;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+#portfolio,
+#about {
+  padding: 6rem 2rem 2rem;
+}
+
+.subheader {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: calc(100% - 4rem);
+  margin: 0 auto;
+}
+
+.gallery-item {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0000009a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  ;
+}
+
+.gallery-item.tapped .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.overlay span {
+  color: white;
   font-size: 1.5rem;
-  z-index: 9999;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+#video-click-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  /* sotto al bottone */
+}
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.gallery-item.placeholder {
+  pointer-events: none;
+}
+
+gallery-item.placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+.gallery-item.placeholder .overlay {
+  opacity: 0;
+  /* o 1 se vuoi un layer sopra anche al PNG */
+}
+
+.gallery-item.placeholder:hover img {
+  transform: none;
+}
+
+.gallery-item.placeholder .overlay span {
+  font-style: italic;
+  font-weight: 300;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-item.placeholder:nth-of-type(n+8) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .about-image {
+    flex: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-image img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .about-content {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-weight: 500;
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: center;
+  }
+  
+  .contact-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  
+  .contact-icons a svg {
+    width: 32px;
+    height: 32px;
+    fill: #00a0df;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .contact-icons a:hover svg,
+  .contact-icons a:active svg {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.about-separator {
+  height: 2px;
+  background-color: #ccc;
+  margin: 3rem 0 2rem;
+  width: 95%;
+}
+
+.about-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .icon-svg {
-  width: 32px;
-  height: 32px;
-  /* usa currentColor o fill diretto */
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* filtro che converte il verde originale in un blu #0084B8 */
+  filter:
+  brightness(0)
+  /* trasforma tutto in bianco/nero */
+  saturate(100%)
+  /* mantieni la saturazione */
+  invert(47%)
+  /* sposta il bianco verso il colore base */
+  sepia(99%)
+  /* aggiunge una punta di calore */
+  saturate(764%)
+  /* intensifica il colore ottenuto */
+  hue-rotate(160deg)
+  /* sposta il colore verso l’azzurro/blu */
+  brightness(86%)
+  /* luminosità a 100% */
+  contrast(106%);
+  /* contrasto normale */
+}
+
+.icon-svg:hover {
+  transform: scale(1.1);
+  /* blu più scuro al passaggio del mouse */
+  filter:
+  brightness(0) saturate(100%) invert(33%) sepia(83%) saturate(3960%) hue-rotate(177deg) brightness(97%)
+  /* 90% di luminosità */
+  contrast(101%);
+}
+
+@media screen and (max-width: 768px) {
+  .about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+}
+
+.about-icons {
+  gap: 1.5rem;
+}
+
+.icon-svg {
+  width: 40px;
+  height: 40px;
+}
+
+.about-content p {
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.about-content mark {
+  background-color: #3CB0DD;
+  padding: 0 0.2em;
+  border-radius: 2px;
+}
+
+h2 {
   color: #0084B8;
-  fill:  #0084B8;
-  transition: fill 0.3s ease, color 0.3s ease;
-}
-.icon-svg:hover {
-  color: #005f8c;
-  fill:  #005f8c;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.icon-svg {
-  width: 32px;
-  height: 32px;
-  color:  #0084B8;        /* blu base */
-  transition: color 0.3s ease;
-}
-.icon-svg:hover {
-  color: #005f8c;         /* blu scuro on hover */
+body.noscroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
-/* ———————————————
-   Colora di blu le icone in About Me
-   ——————————————— */
-.about-icons img {
-  width: 32px;
-  height: 32px;
-  filter:
-    hue-rotate(120deg)      /* sposta il verde verso il blu */
-    saturate(200%)          /* intensifica il colore */
-    brightness(1)           /* mantieni la luminosità */
-    !important;
-  transition: filter 0.3s ease !important;
+body.about-active {
+  height: 100vh;
+  overflow: hidden;
+  min-height: 100vh !important;
 }
-.about-icons img:hover {
-  filter:
-    hue-rotate(120deg)
-    saturate(300%)
-    brightness(0.9)
-    !important;
+
+@media screen and (min-width: 769px) {
+  .about-container {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .about-image {
+    flex: 0 0 280px;
+    /* dimensione maggiore */
+    margin-right: 2rem;
+  }
+  
+  .about-image img {
+    width: 280px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 0;
+  }
+  
+  .about-content {
+    flex: 1;
+    text-align: justify;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.4rem;
+    /* spazio laterale ridotto */
+  }
+}
+
+.logo-img {
+  height: 65px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .subheader {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== FINAL BLEARRED HERO FIX ===== */
+#home{
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+#home video{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100dvh;
+  object-fit: cover;
+}
+
+header{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+
+nav a{
+  color:#fff !important;
+}
+
+.hamburger div,
+.hamburger span,
+.hamburger-line{
+  background:#fff !important;
+}
+
+
+/* ===== FINAL BLEARRED LAYOUT OVERRIDE ===== */
+#home{
+  position: relative !important;
+  width:100vw !important;
+  height:100vh !important;
+  overflow:hidden !important;
+}
+
+#home video{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  object-fit:cover !important;
+  z-index:-1 !important;
+}
+
+header{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  height:4rem !important;
+  display:flex !important;
+  align-items:center !important;
+}
+
+nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:2rem !important;
+  margin-left:2rem !important;
+}
+
+nav a{
+  color:#fff !important;
+  font-size:0.75rem !important;
+  font-weight:300 !important;
+  letter-spacing:0.2em !important;
+  text-transform:uppercase !important;
+  text-decoration:none !important;
+}
+
+.hamburger{
+  display:none !important;
+}
+/* ===== END OVERRIDE ===== */
+
+/* === black strip under logo / nav === */
+header{
+  background:rgba(0,0,0,.75)!important;
+  border:none!important;
+  box-shadow:none!important;
+}
+nav a{
+  color:#fff!important;
+}
+
+/* === Showreel button override, Blearred style === */
+.showreel-btn{
+  position:absolute;
+  bottom:20vh;
+  left:50%;
+  transform:translateX(-50%);
+  padding:1rem 4rem;
+  border:1.5px solid #fff;
+  border-radius:34px;
+  background:transparent;
+  color:#fff;
+  font-family:'Montserrat',sans-serif;
+  font-size:1.2rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  transition:'background' .3s ease,color .3s ease;
+  z-index:900;
+}
+.showreel-btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* === Contact section Blearred style === */
+#contact{
+  position: relative;
+  min-height:100vh;
+  padding:120px 1rem 60px; /* space for fixed header */
+  align-items:center;
+  justify-content:center;
+}
+#contact::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:-1;
+}
+.contact-wrapper{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  backdrop-filter:blur(6px);
+}
+.contact-wrapper h1{
+  font-weight:400;
+  font-size:2rem;
+  letter-spacing:.2em;
+  margin-bottom:2rem;
+  text-align:center;
+}
+#contact form{
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+#contact input,
+#contact textarea{
+  background:rgba(255,255,255,.1);
+  border:1px solid #fff;
+  border-radius:4px;
+  padding:1rem 1.25rem;
+  font-size:1rem;
+  color:#fff;
+  resize:vertical;
+}
+#contact input::placeholder,
+#contact textarea::placeholder{
+  color:rgba(255,255,255,.7);
+}
+#contact button{
+  align-self:center;
+  padding:1rem 3.5rem;
+  border:1.5px solid #fff;
+  border-radius:34px;
+  background:transparent;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  font-size:1rem;
+  cursor:pointer;
+  transition:background .3s ease,color .3s ease;
+}
+#contact button:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* === Global font override to Space Grotesk (Blearred) & centered Contact === */
+body, nav a, .titolo, h1, h2, h3, h4, h5, h6, input, textarea, button {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+/* Center Contact section */
+#contact{
+  position:relative;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:120px 1rem 60px; /* ensure space for header */
+}
+#contact .contact-wrapper{
+  width:100%;
+  max-width:560px;
+  backdrop-filter:blur(6px);
+}
+#contact .contact-wrapper h1{
+  font-size:3rem;
+  letter-spacing:.25em;
+  margin-bottom:2rem;
+  color:#fff;
+  text-transform:uppercase;
+}
+
+/* === FINAL OVERRIDES (Space Grotesk, white centered titles, centered contact) === */
+body, nav a, header nav a, .titolo, .subheader, h1, h2, h3, h4, h5, h6, input, textarea, button{
+  font-family:'Space Grotesk', sans-serif !important;
+}
+
+.titolo, .subheader{
+  color:#ffffff !important;
+  text-align:center !important;
+  font-size:3rem !important;
+  letter-spacing:.25em !important;
+  text-transform:uppercase !important;
+}
+
+/* Force nav link white */
+nav a{ color:#ffffff !important; }
+
+/* Center CONTACT ME section */
+#contact{
+  min-height:100vh !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+
+#contact .contact-wrapper,
+#contact .container{
+  width:100% !important;
+  max-width:600px !important;
+  margin:0 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+
+#contact input,
+#contact textarea{
+  width:100% !important;
+}
+
+#contact button{
+  align-self:center !important;
+}
+
+/* === ABOUT ME Blearred-style centered layout === */
+#about{
+  position:relative;
+  min-height:100vh;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:120px 1rem 80px; /* space for header */
+}
+#about::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:-1;
+}
+#about .about-container{
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:2rem !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  padding:0 1rem !important;
+  max-width:750px !important;
+}
+#about .about-image img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:50%;
+}
+#about .about-content{
+  color:#ffffff !important;
+  font-size:1.2rem !important;
+  line-height:1.8 !important;
+  font-weight:300 !important;
+  text-align:center !important;
+}
+#about .about-content h2{
+  font-size:3rem !important;
+  letter-spacing:.25em !important;
+  text-transform:uppercase !important;
+  margin-bottom:1.5rem !important;
+  color:#ffffff !important;
+}
+#about .about-separator{
+  background:rgba(255,255,255,0.4) !important;
+}
+#about .about-icons .icon-svg{
+  filter:none !important;
+  fill:#ffffff !important;
+  width:36px;
+  height:36px;
+}
+#about .about-icons .icon-svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+#about .subheader{
+  font-size:3rem !important;
+  letter-spacing:.25em !important;
+  text-transform:uppercase !important;
+  color:#ffffff !important;
+  text-align:center !important;
+  margin:0 0 3rem 0 !important;
+}
+
+
+/* Scroll control class */
+html.no-scroll, body.no-scroll{
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* === Navbar icons right aligned & white === */
+header nav{
+  display:flex !important;
+  align-items:center !important;
+  gap:2rem !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+}
+header nav .about-icons .icon-svg{
+  width:28px !important;
+  height:28px !important;
+  filter:none !important;
+  fill:#ffffff !important;
+  transition:transform .3s ease, opacity .3s ease;
+}
+header nav .about-icons .icon-svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+
+header .about-icons .icon-svg{
+  width:28px !important;
+  height:28px !important;
+  fill:#ffffff !important;
+  filter:none !important;
+}
+/* === NAVBAR ICONS RIGHT & WHITE (final) === */
+header nav{
+  display:flex !important;
+  align-items:center !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;   /* pushes icons to far right */
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+  position:relative !important;  /* reset any absolute */
+  right:auto !important;
+  top:auto !important;
+  transform:none !important;
+}
+header nav .about-icons .icon-svg{
+  width:28px !important;
+  height:28px !important;
+  fill:#ffffff !important;       /* pure white icons */
+  filter:none !important;        /* remove hue/rotate filter */
+  transition:transform .3s ease, opacity .3s ease;
+}
+header nav .about-icons .icon-svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+/* === NAVBAR ICONS RIGHT & PURE WHITE (override) === */
+header nav,
+header.open nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+  position:relative !important;
+  top:auto !important;
+  right:auto !important;
+  transform:none !important;
+}
+/* target both <img> and inline svg with class icon-svg */
+header nav .about-icons img.icon-svg,
+header nav .about-icons .icon-svg{
+  width:28px !important;
+  height:28px !important;
+  filter:invert(1) brightness(100%) !important; /* make white */
+  fill:#ffffff !important;
+  transition:transform .3s ease, opacity .3s ease;
+}
+header nav .about-icons img.icon-svg:hover,
+header nav .about-icons .icon-svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+/* === NAVBAR ICONS ALIGN RIGHT & WHITE (FINAL) === */
+header nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  width:100% !important;        /* nav spans full header */
+  gap:2rem !important;
+  margin-left:0 !important;     /* remove left margin */
+}
+header nav .about-icons{
+  margin-left:auto !important;  /* push icons to far right */
+  display:flex !important;
+  align-items:center !important;
+  gap:1.5rem !important;
+}
+/* ensure SVG or IMG icons appear white */
+header nav .about-icons img,
+header nav .about-icons svg,
+header nav .about-icons .icon-svg{
+  width:28px !important;
+  height:28px !important;
+  filter:brightness(0) invert(1) !important; /* force white */
+  fill:#ffffff !important;
+  transition:transform .3s ease, opacity .3s ease;
+}
+header nav .about-icons img:hover,
+header nav .about-icons svg:hover{
+  transform:scale(1.15);
+  opacity:.85;
+}
+/* === NAVBAR ICONS: right aligned + vertically centered === */
+header nav{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;   /* vertical centering of nav contents */
+  width:100% !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;      /* push to right */
+  display:flex !important;
+  align-items:center !important;    /* vertical centering inside group */
+  gap:1.25rem !important;
+  height:100% !important;
+}
+header nav .about-icons img,
+header nav .about-icons svg{
+  width:28px !important;
+  height:28px !important;
+  filter:brightness(0) invert(1) !important;  /* force white */
+  display:block !important;
+}
+/* === NAVBAR ICONS RIGHT & VERTICALLY CENTERED (ultimate) === */
+header{
+  height:5rem !important;
+  display:flex !important;
+  align-items:center !important;
+}
+header nav{
+  display:flex !important;
+  align-items:center !important;   /* vertical center nav items */
+  height:100% !important;
+  flex-grow:1;
+  gap:2rem !important;
+  padding:0 2rem !important;
+}
+header nav a{
+  line-height:1 !important;
+}
+header nav .about-icons{
+  margin-left:auto !important;      /* icons block to far right */
+  display:flex !important;
+  align-items:center !important;    /* vertical center inside block */
+  gap:1.5rem !important;
+  height:100% !important;
+}
+header nav .about-icons img,
+header nav .about-icons svg{
+  width:28px !important;
+  height:28px !important;
+  filter:brightness(0) invert(1) !important;  /* white */
+  display:block;
+}
+/* === FIX NAVBAR VISIBILITY (black strip) === */
+header{
+  background:rgba(0,0,0,.8) !important;
+}
+header nav a{
+  color:#ffffff !important;
+}
+header nav .about-icons img,
+header nav .about-icons svg{
+  filter:brightness(0) invert(1) !important;
+  fill:#ffffff !important;
+}
+/* === NAVBAR ICONS FINE‑TUNE: lowered by 6px === */
+header nav .about-icons{
+  position:absolute !important;
+  right:2rem !important;
+  top:50% !important;
+  transform:translateY(-40%) !important; /* lower than -50% */
+}
+/* === NAVBAR ICONS FINAL OFFSET (align to red line) === */
+header nav .about-icons{
+  top:8px !important;   /* pushed down a bit more */
+}
+/* === NAVBAR ICONS LOWER OFFSET (align exactly) === */
+header nav .about-icons{
+  top:30px !important;  /* adjust as needed */
 }
