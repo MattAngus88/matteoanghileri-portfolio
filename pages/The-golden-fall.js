@@ -163,7 +163,7 @@ export default function TheGoldenFall() {
           max-width: 900px;
           position: fixed;
         }
-          @media screen and (max-width:768px) {
+          @media screen and (max-width:1920px) {
             .card {
               position: static;
             }
