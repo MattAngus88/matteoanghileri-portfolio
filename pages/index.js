@@ -97,7 +97,7 @@ export default function Home() {
     <video className="section-bg" src="/video/overlay.mp4" autoPlay muted loop playsInline></video>
     <h1 className="subheader text-center titolo">My Portfolio</h1>
     <div className="container">
-    <div className="row">
+    <div className="row justify-content-center">
     
     {[
       {
@@ -140,10 +140,10 @@ export default function Home() {
   <Link
     key={title}
     href={href}
-    className="text-decoration-none col-6"
+    className="text-decoration-none col-10"
     style={{ color: 'black' }}
   >
-    <div className="card-hover card mb-3 w-100">
+    <div className="card mb-3 w-100 rounded-4 overflow-hidden">
       <div className="row g-0">
         <div className="col-md-8">
           <img src={img} className="img-fluid bordoarrotondato" alt={alt} />

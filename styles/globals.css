@@ -67,7 +67,7 @@ così il video resta confinato al loro interno   */
 }
 
 .card {
-  border-radius: 60px;
+  border-radius: 60px !important;
 }
 
 .bordoarrotondato {

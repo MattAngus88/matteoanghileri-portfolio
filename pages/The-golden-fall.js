@@ -56,7 +56,6 @@ export default function TheGoldenFall() {
             <div></div>
           </div>
         </div>
-
         <nav style={{ display: menuOpen ? 'flex' : 'none' }}>
           <Link href="/#portfolio" legacyBehavior>
             <a>My Portfolio</a>
@@ -93,7 +92,7 @@ export default function TheGoldenFall() {
             ) : (
               <div className="video-embed">
                 <iframe
-                  src="https://www.youtube.com/embed/sJ2gNUP1KDU?autoplay=1&mute=1&rel=0"
+                  src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&rel=0"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -140,71 +139,10 @@ export default function TheGoldenFall() {
           height: 100%;
           object-fit: cover;
         }
-        header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 5rem;
-          background: #fdfaf6;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-          z-index: 1000;
-          overflow: hidden;
-          transition: height 0.35s ease-out;
-          display: flex;
-          align-items: center;
-          padding: 0 1.2rem;
-          justify-content: space-between;
-        }
-        header.open {
-          height: 14rem;
-        }
-        .top {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          justify-content: space-between;
-        }
         .logo-img {
           height: 52px;
           width: auto;
           cursor: pointer;
-        }
-        .hamburger {
-          width: 32px;
-          height: 22px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          cursor: pointer;
-        }
-        .hamburger div {
-          height: 4px;
-          background: #333;
-          transition: background 0.25s;
-        }
-        .hamburger:hover div {
-          background: #0084b8;
-        }
-        nav {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1rem;
-          margin-top: 1.2rem;
-        }
-        nav a {
-          color: #333;
-          text-decoration: none;
-          font-size: 1.25rem;
-          text-transform: uppercase;
-          font-weight: 300;
-          letter-spacing: 0.08em;
-          transition: color 0.2s;
-        }
-        nav a:hover {
-          color: #0084b8;
         }
         .wrapper {
           width: 100%;
@@ -214,7 +152,6 @@ export default function TheGoldenFall() {
           padding: 7rem 1rem 4rem;
         }
         .card {
-          background: #fff;
           border-radius: 20px;
           box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
           padding: 2.5rem 2rem;
@@ -224,18 +161,30 @@ export default function TheGoldenFall() {
           gap: 2.5rem;
           width: 100%;
           max-width: 900px;
+          position: fixed;
         }
+          @media screen and (max-width:768px) {
+            .card {
+              position: static;
+            }
+          } 
+          .card p {
+          color: white;
+          }
         .project-heading h2 {
           font-size: 3rem;
           font-weight: 600;
-          color: #0084b8;
+          color:rgb(255, 255, 255);
           text-align: center;
           margin: 0;
         }
+          mark {
+          background: #3cb0dd;
+          }
         .project-heading h3 {
           font-size: 1.8rem;
           font-weight: 300;
-          color: #6c6c6c;
+          color:rgb(255, 255, 255);
           text-align: center;
           margin-top: 0.4rem;
           margin-bottom: 0;
@@ -243,7 +192,7 @@ export default function TheGoldenFall() {
         .video-card {
           position: relative;
           width: 100%;
-          max-width: 780px;
+          max-width: 700px;
           aspect-ratio: 16 / 9;
           overflow: hidden;
           border-radius: 12px;
@@ -298,7 +247,7 @@ export default function TheGoldenFall() {
         }
         .description {
           max-width: 520px;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           line-height: 1.45;
           font-weight: 500;
           text-align: justify;
@@ -309,7 +258,7 @@ export default function TheGoldenFall() {
         .back-arrow {
           align-self: flex-start;
           font-size: 2.6rem;
-          color: #929292;
+          color:rgb(255, 255, 255);
           text-decoration: none;
           transition: color 0.25s ease;
           position: relative;
