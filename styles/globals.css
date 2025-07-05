@@ -38,6 +38,11 @@ VIDEO DI BACKGROUND per sezioni
   /* il video non intercetta click */
 }
 
+.nav-link {
+margin-left: 1rem;
+margin-right: 1rem;
+}
+
 /* le sezioni diventano contenitori relative,
 così il video resta confinato al loro interno   */
 #portfolio,

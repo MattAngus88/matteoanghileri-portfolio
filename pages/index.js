@@ -44,26 +44,27 @@ export default function Home() {
     </Head>
     
     <header className={menuOpen ? 'open' : ''}>
-    <div className="top">
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container-fluid">
     <div className="logo" onClick={() => (window.location.href = '/')}>
     <img src="/images/Logo.png" alt="AM Logo" className="logo-img" />
     </div>
-    <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-    <div></div>
-    <div></div>
-    <div></div>
-    </div>
-    </div>
-    <nav>
-    <a href="#portfolio" onClick={() => showSection('portfolio')}>
-    My Portfolio
-    </a>
-    <a href="#about" onClick={() => showSection('about')}>
-    About Me
-    </a>
-    <a href="#contact" onClick={() => showSection('contact')}>
-    Contact Me
-    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+              <a class="nav-link" href="#portfolio" onClick={() => showSection('portfolio')}>My Portfolio</a>
+        </li>
+         <li class="nav-item">
+              <a class="nav-link" href="#about" onClick={() => showSection('about')}>About Me</a>
+        </li>
+         <li class="nav-item">
+              <a class="nav-link" href="#contact" onClick={() => showSection('contact')}>Contact Me</a>
     <div className="about-icons">
     <a href="docs/CV.pdf" target="_blank" title="Download CV" rel="noreferrer">
     <img src="/images/cv-icon.svg" alt="CV" className="icon-svg" />
@@ -80,7 +81,13 @@ export default function Home() {
     <img src="/images/linkedin-icon.svg" alt="LinkedIn" className="icon-svg" />
     </a>
     </div>
-    </nav>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
     </header>
     
     {/* HOME Section */}
