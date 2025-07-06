@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function TheGoldenFall() {
+export default function ZBRUSHProject() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
@@ -13,7 +13,7 @@ export default function TheGoldenFall() {
   return (
     <>
       <Head>
-        <title>ANGHILERI 3D – THE GOLDEN FALL</title>
+        <title>ANGHILERI 3D – ZBRUSH Project</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -73,17 +73,17 @@ export default function TheGoldenFall() {
       <main className="wrapper">
         <section className="card">
           <div className="project-heading">
-            <h2>THE GOLDEN FALL</h2>
-            <h3>Cinematic Team Project</h3>
+            <h2>ZBRUSH PROJECT</h2>
+            <h3>Character Design</h3>
           </div>
 
           {/* Video Card */}
           <div className="video-card" onClick={playVideo} style={{ cursor: 'pointer' }}>
             {!videoPlaying ? (
               <div className="thumbnail">
-                <img className="static" src="/images/thumb6.png" alt="BAR cover" />
+                <img className="static" src="/images/thumb3.png" alt="ZBrush Project cover" />
                 <video className="animated" autoPlay muted loop playsInline>
-                  <source src="/video/the golden fall.webm" type="video/webm" />
+                  <source src="/video/zbrush project.webm" type="video/webm" />
                 </video>
                 <div className="overlay">
                   <span className="play-button">&#9658;</span>
@@ -92,12 +92,12 @@ export default function TheGoldenFall() {
             ) : (
               <div className="video-embed">
                 <iframe
-                  src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&rel=0"
+                  src="https://www.youtube.com/embed/zFM_5I4qu2k?autoplay=1&mute=1&rel=0"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   style={{ width: '100%', height: '100%' }}
-                  title="The Golden Fall Video"
+                  title="ZBrush Project"
                 />
               </div>
             )}
@@ -105,19 +105,9 @@ export default function TheGoldenFall() {
 
           {/* Description */}
           <div className="description">
-            <p>
-              Cinematic sequence produced with <mark>Unreal Engine</mark> by a team of four people.
-            </p>
-            <p>
-              For this project I took care of the modeling and texturing of the interiors of the Mayan temple, using
-              the software: <mark>Maya</mark>, <mark>Substance Painter</mark> and <mark>ZBrush</mark>, thus creating
-              the materials and architectural details to immerse the viewer in the atmosphere of the{' '}
-              <mark>ancient civilization</mark>.
-            </p>
-            <p>
-              A heartfelt thanks to my colleagues – Michele Brez, Gabriele Dallari and Julia Hoa – for the precious
-              collaboration.
-            </p>
+            <p>I sculpted the character in <mark>ZBrush</mark>, exaggerating the muscles and proportions for a menacing presence.</p>
+        <p>The textures are painted in Polypaint and a custom <mark>MatCap</mark> generates the characteristic metallic rim-light in the viewport. The render was refined in <mark>Photoshop</mark> to balance contrasts and introduce light atmospheric veils.</p>
+        <p>The final <mark>turntable</mark> highlights the double-headed hammer and the post-apocalyptic aesthetic of the character.</p>
           </div>
 
           <Link href="/#portfolio" legacyBehavior>
@@ -174,7 +164,7 @@ export default function TheGoldenFall() {
         .project-heading h2 {
           font-size: 3rem;
           font-weight: 600;
-          color: #0084B8;
+          color: #3cb0dd
           text-align: center;
           margin: 0;
         }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function TheGoldenFall() {
+export default function Cafe() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
@@ -13,7 +13,7 @@ export default function TheGoldenFall() {
   return (
     <>
       <Head>
-        <title>ANGHILERI 3D – THE GOLDEN FALL</title>
+        <title>ANGHILERI 3D – CAFE</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -73,17 +73,17 @@ export default function TheGoldenFall() {
       <main className="wrapper">
         <section className="card">
           <div className="project-heading">
-            <h2>THE GOLDEN FALL</h2>
-            <h3>Cinematic Team Project</h3>
+            <h2>CAFE</h2>
+            <h3>Turnaround Environment Design</h3>
           </div>
 
           {/* Video Card */}
           <div className="video-card" onClick={playVideo} style={{ cursor: 'pointer' }}>
             {!videoPlaying ? (
               <div className="thumbnail">
-                <img className="static" src="/images/thumb6.png" alt="BAR cover" />
+                <img className="static" src="/images/thumb5.png" alt="CAFE cover" />
                 <video className="animated" autoPlay muted loop playsInline>
-                  <source src="/video/the golden fall.webm" type="video/webm" />
+                  <source src="/video/NYcafe.webm" type="video/webm" />
                 </video>
                 <div className="overlay">
                   <span className="play-button">&#9658;</span>
@@ -92,12 +92,12 @@ export default function TheGoldenFall() {
             ) : (
               <div className="video-embed">
                 <iframe
-                  src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&rel=0"
+                  src="https://www.youtube.com/embed/CN-SaXSH6Vk?autoplay=1&mute=1&rel=0"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   style={{ width: '100%', height: '100%' }}
-                  title="The Golden Fall Video"
+                  title="NYcafe Video"
                 />
               </div>
             )}
@@ -106,17 +106,13 @@ export default function TheGoldenFall() {
           {/* Description */}
           <div className="description">
             <p>
-              Cinematic sequence produced with <mark>Unreal Engine</mark> by a team of four people.
+              <mark>NY CAFE</mark> is a 3D diorama inspired by the original concept by Dzmitry Doryn.
             </p>
             <p>
-              For this project I took care of the modeling and texturing of the interiors of the Mayan temple, using
-              the software: <mark>Maya</mark>, <mark>Substance Painter</mark> and <mark>ZBrush</mark>, thus creating
-              the materials and architectural details to immerse the viewer in the atmosphere of the{' '}
-              <mark>ancient civilization</mark>.
+              I modeled the entire scene in <mark>Autodesk Maya</mark>, defining every detail of the furniture and architecture. The textures were created in <mark>Substance Painter</mark>, while lighting and rendering were managed with <mark>Arnold</mark>. Finally, I took care of compositing and color grading in <mark>NukeX</mark>, refining the atmosphere and color palette.
             </p>
             <p>
-              A heartfelt thanks to my colleagues – Michele Brez, Gabriele Dallari and Julia Hoa – for the precious
-              collaboration.
+              The result is a <mark>tournaround</mark> of a New York Bar that conveys the warm and welcoming atmosphere of a metropolitan cafe.
             </p>
           </div>
 
@@ -174,7 +170,7 @@ export default function TheGoldenFall() {
         .project-heading h2 {
           font-size: 3rem;
           font-weight: 600;
-          color: #0084B8;
+          color: #3cb0dd
           text-align: center;
           margin: 0;
         }

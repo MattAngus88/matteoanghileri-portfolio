@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function TheGoldenFall() {
+export default function Riseofthebadlandsvehicle() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
@@ -13,7 +13,7 @@ export default function TheGoldenFall() {
   return (
     <>
       <Head>
-        <title>ANGHILERI 3D – THE GOLDEN FALL</title>
+        <title>ANGHILERI 3D – RISE OF THE BADLANDS VEHICLE</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -73,17 +73,17 @@ export default function TheGoldenFall() {
       <main className="wrapper">
         <section className="card">
           <div className="project-heading">
-            <h2>THE GOLDEN FALL</h2>
-            <h3>Cinematic Team Project</h3>
+            <h2>RISE OF THE BADLANDS VEHICLE</h2>
+            <h3>Automotive Design</h3>
           </div>
 
           {/* Video Card */}
           <div className="video-card" onClick={playVideo} style={{ cursor: 'pointer' }}>
             {!videoPlaying ? (
               <div className="thumbnail">
-                <img className="static" src="/images/thumb6.png" alt="BAR cover" />
+                <img className="static" src="/images/thumb2.png" alt="BAR cover" />
                 <video className="animated" autoPlay muted loop playsInline>
-                  <source src="/video/the golden fall.webm" type="video/webm" />
+                  <source src="/video/Rise of the badlands vehicle.webm" type="video/webm" />
                 </video>
                 <div className="overlay">
                   <span className="play-button">&#9658;</span>
@@ -92,7 +92,7 @@ export default function TheGoldenFall() {
             ) : (
               <div className="video-embed">
                 <iframe
-                  src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&rel=0"
+                  src="https://www.youtube.com/embed/sJ2gNUP1KDU?autoplay=1&mute=1&rel=0"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -106,17 +106,13 @@ export default function TheGoldenFall() {
           {/* Description */}
           <div className="description">
             <p>
-              Cinematic sequence produced with <mark>Unreal Engine</mark> by a team of four people.
+              <mark>Automotive 3D</mark> is a photorealistic visualization project born from the original concept by Kris Thaler.
             </p>
             <p>
-              For this project I took care of the modeling and texturing of the interiors of the Mayan temple, using
-              the software: <mark>Maya</mark>, <mark>Substance Painter</mark> and <mark>ZBrush</mark>, thus creating
-              the materials and architectural details to immerse the viewer in the atmosphere of the{' '}
-              <mark>ancient civilization</mark>.
+              I curated the entire car asset as a main element for a scene in <mark>Unreal Engine</mark>, following a complete production pipeline.
             </p>
             <p>
-              A heartfelt thanks to my colleagues – Michele Brez, Gabriele Dallari and Julia Hoa – for the precious
-              collaboration.
+              The modeling was done in <mark>Maya</mark>, textured in <mark>Substance Painter</mark> , rendered in <mark>Arnold</mark>, built in <mark>NukeX</mark> and imported into Unreal with ACES tone mapping: a compact workflow that preserves the details of the main asset even in real time.
             </p>
           </div>
 
@@ -174,7 +170,7 @@ export default function TheGoldenFall() {
         .project-heading h2 {
           font-size: 3rem;
           font-weight: 600;
-          color: #0084B8;
+          color: #3cb0dd
           text-align: center;
           margin: 0;
         }

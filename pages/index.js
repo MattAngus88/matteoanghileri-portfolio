@@ -47,7 +47,7 @@ export default function Home() {
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <div className="logo" onClick={() => (window.location.href = '/')}>
     <img src="/images/Logo.png" alt="AM Logo" className="logo-img" />
@@ -110,13 +110,13 @@ export default function Home() {
       {
         href: '/UE-Cinematic',
         img: '/images/thumb1.png',
-        alt: 'Rise-of-the-badlands-vehicle',
+        alt: 'UE-Cinematic',
         title: 'UE CINEMATIC',
       },
       {
         href: '/The-golden-fall',
         img: '/images/thumb6.png',
-        alt: 'Rise-of-the-badlands-vehicle',
+        alt: 'The-golden-fall',
         title: 'THE GOLDEN FALL',
       },
       {
@@ -206,7 +206,7 @@ export default function Home() {
     <video className="section-bg" src="/video/overlay.mp4" autoPlay muted loop playsInline></video>
     <div className="contact-wrapper">
     <h1>Contact&nbsp;Me</h1>
-    <form action="mailto:yourmail@example.com" method="post" encType="text/plain">
+    <form action="mailto:matteo.anghileri88@.com" method="post" encType="text/plain">
     <input type="text" name="name" placeholder="Your Name" required />
     <input type="email" name="email" placeholder="Your Email" required />
     <textarea name="message" rows={5} placeholder="Your Message" required></textarea>

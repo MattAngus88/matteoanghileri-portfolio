@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function TheGoldenFall() {
+export default function UECinematic() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
@@ -13,7 +13,7 @@ export default function TheGoldenFall() {
   return (
     <>
       <Head>
-        <title>ANGHILERI 3D – THE GOLDEN FALL</title>
+        <title>ANGHILERI 3D – UE Cinematic</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
@@ -73,17 +73,17 @@ export default function TheGoldenFall() {
       <main className="wrapper">
         <section className="card">
           <div className="project-heading">
-            <h2>THE GOLDEN FALL</h2>
-            <h3>Cinematic Team Project</h3>
+            <h2>UE CINEMATIC</h2>
+            <h3>Environment - Landscape Design</h3>
           </div>
 
           {/* Video Card */}
           <div className="video-card" onClick={playVideo} style={{ cursor: 'pointer' }}>
             {!videoPlaying ? (
               <div className="thumbnail">
-                <img className="static" src="/images/thumb6.png" alt="BAR cover" />
+                <img className="static" src="/images/thumb1.png" alt="UE Cinematic cover" />
                 <video className="animated" autoPlay muted loop playsInline>
-                  <source src="/video/the golden fall.webm" type="video/webm" />
+                  <source src="/video/UE Cinematic.webm" type="video/webm" />
                 </video>
                 <div className="overlay">
                   <span className="play-button">&#9658;</span>
@@ -92,12 +92,12 @@ export default function TheGoldenFall() {
             ) : (
               <div className="video-embed">
                 <iframe
-                  src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&rel=0"
+                  src="https://www.youtube.com/embed/PDsXiU0pU3Y?autoplay=1&mute=1&rel=0"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   style={{ width: '100%', height: '100%' }}
-                  title="The Golden Fall Video"
+                  title="UE Cinematic"
                 />
               </div>
             )}
@@ -106,17 +106,13 @@ export default function TheGoldenFall() {
           {/* Description */}
           <div className="description">
             <p>
-              Cinematic sequence produced with <mark>Unreal Engine</mark> by a team of four people.
+              Personal project developed alone with <mark>Unreal Engine</mark>, set in a military base and centered on the model of a dune buggy.
             </p>
             <p>
-              For this project I took care of the modeling and texturing of the interiors of the Mayan temple, using
-              the software: <mark>Maya</mark>, <mark>Substance Painter</mark> and <mark>ZBrush</mark>, thus creating
-              the materials and architectural details to immerse the viewer in the atmosphere of the{' '}
-              <mark>ancient civilization</mark>.
+              I took care of every aspect of the aesthetic vision, starting from an original concept by Kris Thaler and declining it in a visual language consistent with the modern military setting.
             </p>
             <p>
-              A heartfelt thanks to my colleagues – Michele Brez, Gabriele Dallari and Julia Hoa – for the precious
-              collaboration.
+              The ground was generated with <mark>Gaea</mark> and the landscape was then refined in Unreal Engine; <mark>Quixel Megascans</mark> were integrated to further enrich the scene.
             </p>
           </div>
 
@@ -174,7 +170,7 @@ export default function TheGoldenFall() {
         .project-heading h2 {
           font-size: 3rem;
           font-weight: 600;
-          color: #0084B8;
+          color: #3cb0dd
           text-align: center;
           margin: 0;
         }
